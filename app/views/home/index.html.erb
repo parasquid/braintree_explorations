@@ -1,4 +1,8 @@
-<%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "checkout-form" } do |form| %>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "checkout-form" } do |form| %>
   <div id="error-message"></div>
 
   <%= form.label :card_number %>
