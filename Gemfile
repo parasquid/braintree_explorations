@@ -46,3 +46,4 @@ group :development do
   gem 'spring'
 end
 
+gem "braintree", "~> 2.66.0"
