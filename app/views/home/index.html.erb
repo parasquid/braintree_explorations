@@ -1,19 +1,25 @@
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
-
-  <%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "checkout-form" } do |form| %>
-  <div id="error-message"></div>
-
-  <%= form.label :card_number %>
-  <div class="hosted-field" id="card-number"></div>
-
-  <%= form.label :cvv %>
-  <div class="hosted-field" id="cvv"></div>
-
-  <%= form.label :expiration_date %>
-  <div class="hosted-field" id="expiration-date"></div>
-
-  <%= form.hidden_field "payment_method_nonce" %>
-  <%= form.submit "Give me $10", disabled: true %>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
 <% end %>
+
+<div class="credit-card-form">
+  <%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "checkout-form" } do |form| %>
+    <div id="error-message"></div>
+
+    <%= form.label :card_number, "Credit Card Number" %>
+    <div class="hosted-field" id="card-number">
+    </div>
+
+    <%= form.label :cvv, "CVV" %>
+    <div class="hosted-field" id="cvv">
+    </div>
+
+    <%= form.label :expiration_date, "Expiration Date" %>
+    <div class="hosted-field" id="expiration-date">
+    </div>
+
+    <%= form.hidden_field "payment_method_nonce" %>
+    <%= form.submit "Give me $10", disabled: true, class: "btn btn-primary" %>
+    <div class="clearfix"></div>
+  <% end %>
+</div>
